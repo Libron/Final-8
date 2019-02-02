@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
-import axios from '../../axios-instance';
-import Spinner from "../../components/Spinner/Spinner";
 import {Button, Card, CardText, CardTitle, Col, Row} from "reactstrap";
+
+import {CATEGORIES} from "../../global";
+import axios from '../../axios-instance';
+
+import Spinner from "../../components/Spinner/Spinner";
 import CategoriesList from "../../components/CategoriesList/CategoriesList";
 
 class QuotesList extends Component {
     state = {
-        quotes: null
+        quotes: null,
+        title: ''
     };
 
     componentDidMount() {
@@ -28,12 +32,11 @@ class QuotesList extends Component {
         }
 
         axios.get(url).then(response => {
-            console.log(response.data);
             const quotes = Object.keys(response.data).map(id => {
                 return {...response.data[id], id};
             });
 
-            this.setState({quotes});
+            this.setState({quotes, title: CATEGORIES[this.props.match.params.categoryId]});
         });
     };
 
@@ -45,7 +48,6 @@ class QuotesList extends Component {
             });
         }
     };
-
 
     render() {
         let quotes = <Spinner />;
@@ -67,6 +69,7 @@ class QuotesList extends Component {
                     <CategoriesList />
                 </Col>
                 <Col sm={9}>
+                    <h1>{this.state.title}</h1>
                     {quotes}
                 </Col>
 
