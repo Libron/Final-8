@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Route, Switch} from "react-router-dom";
+import {Container} from "reactstrap";
+import MainMenu from "./components/MainMenu/MainMenu";
+import QuotesList from "./containers/QuotesList/QuotesList";
+import AddQuote from "./containers/AddQuote/AddQuote";
+import EditQuote from "./containers/EditQuote/EditQuote";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+          <MainMenu />
+          <Container>
+              <Switch>
+                  <Route path="/" exact component={QuotesList}/>
+                  <Route path="/add-quote" exact component={AddQuote} />
+                  <Route path="/quotes/:categoryId/edit" exact component={EditQuote} />
+                  <Route path="/quotes/:categoryId"  component={QuotesList} />
+                  <Route render={() => <h1>Not Found</h1>}/>
+              </Switch>
+          </Container>
       </div>
     );
   }
