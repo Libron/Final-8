@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Button, Col, Form, FormGroup, Input, Label} from "reactstrap";
-
 import {CATEGORIES} from "../../global";
 
 class QuoteForm extends Component {
@@ -27,7 +26,6 @@ class QuoteForm extends Component {
         event.preventDefault();
         this.props.submit({...this.state});
     };
-
 
     render() {
         return (
@@ -67,7 +65,7 @@ class QuoteForm extends Component {
 
                 <FormGroup row>
                     <Col sm={{size: 10, offset: 2}} >
-                        <Button type="submit">Save</Button>
+                        <Button type="submit">Submit</Button>
                     </Col>
                 </FormGroup>
             </Form>
