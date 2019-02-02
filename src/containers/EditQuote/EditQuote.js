@@ -1,7 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import axios from '../../axios-instance';
 import QuoteForm from "../../components/QuoteForm/QuoteForm";
-import {Spinner} from "reactstrap";
+import Spinner from "../../components/Spinner/Spinner";
+
 
 class EditQuote extends Component {
     state = {
