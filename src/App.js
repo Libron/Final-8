@@ -14,6 +14,7 @@ class App extends Component {
           <Container>
               <Switch>
                   <Route path="/" exact component={QuotesList}/>
+                  <Route path="/quotes" exact component={QuotesList}/>
                   <Route path="/add-quote" exact component={AddQuote} />
                   <Route path="/quotes/:categoryId/edit" exact component={EditQuote} />
                   <Route path="/quotes/:categoryId"  component={QuotesList} />
